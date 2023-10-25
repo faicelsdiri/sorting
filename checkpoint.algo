@@ -1,0 +1,29 @@
+PROCEDURE insertion (VAR tab1: ARRAY_OF INTEGER[1,2,3,6,8] ,  elm INTEGER);   // procedure d insertion pour insere un entier au tableau
+VAR
+    i :INTEGER;
+    j :INTEGER:=0;
+BEGIN
+
+WHILE (j<tab1.length) DO
+    FOR i FROM tab1.length - 1 DOWNTO 0 DO// parcours du tableau de sens inverse
+        IF (tab1[i] > elm) THEN
+        tab1[i+1]:=tab1[i];  //decalage de la valeur de t[i] 
+        tab1[i]:=elm;         //insertion de l element a sa place
+        END_IF
+    END_FOR
+j++;
+END_WHILE
+END
+
+
+ALGORITHM checkpoint    //algorithme global
+VAR
+    tab1: ARRAY_OF INTEGER[50]; 
+    i :INTEGER;
+    elm :INTEGER:=0;               //elm (l  element a insere)
+BEGIN
+    write("donne un entier a insere");         
+    read(elm);
+    insertion(tab1,elm);   //appel de procedure
+    write("l elemnt est insert a sa place");
+END
